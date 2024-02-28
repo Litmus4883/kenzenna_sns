@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('body');
             $table->timestamps();
+            $table->foreignId('user_id')->constraint()
+                    ->cascadeOnDelete()->cascadeOnDelete()->default(1);
         });
     }
 

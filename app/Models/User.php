@@ -45,6 +45,12 @@ class User extends Authenticatable
     ];
     
     # 1対多の定義
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+    
+    # 1対多の定義
     public function replies(): HasMany
     {
         return $this->hasMany(Reply::class);

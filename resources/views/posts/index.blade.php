@@ -10,6 +10,7 @@
         @foreach($posts as $post)
             <!-- post-->
             <div class="post">
+                <h2 class="name">{{ $post->user->name }}</h2>
                 <h2 class="body">{{ $post->body }}</h2>
             </div>
         @endforeach

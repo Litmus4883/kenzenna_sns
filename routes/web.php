@@ -24,8 +24,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 # 投稿関連機能
-Route::get('/posts', [PostController::class, 'index'])->name('posts_index');
+
+    # getメソッドの'/posts'のルーティング
+    Route::get('/posts', [PostController::class, 'index'])->name('index');
+    Route::get('/posts/create', [PostController::class, 'create'])->name('create');
+    # postメソッドの'/posts'のルーティング
+    Route::post('/posts', [PostController::class, 'store'])->name('store');
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('show');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
