@@ -11,7 +11,7 @@ class PostController extends Controller
     # 投稿一覧画面を返すメソッド
     public function index(Post $post)
     {
-        return view('posts.index')->with(['posts' => $post->get()]);
+        return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
     }
     # 投稿作成画面を返すメソッド
     public function create()

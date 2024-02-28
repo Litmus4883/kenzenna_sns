@@ -19,4 +19,5 @@
             </article>
         @endforeach
     </div>
+    <div class="paginate">{{ $posts->links('vendor.pagination.custom_pagination') }}</div>
 </x-app-layout>
