@@ -13,7 +13,10 @@ class Post extends Model
     use HasFactory;
     
     # fillメソッドを使う時の許可
-    protected $fillable = ['body'];
+    protected $fillable = [
+        'body',
+        'user_id',
+    ];
     
     # 1対多の定義
     public function images(): HasMany
@@ -36,5 +39,17 @@ class Post extends Model
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
+    }
+    
+    # 取得件数の制限
+    public function getByLimit(int $limit_count = 4)
+    {
+        return $this->orderBy('updated_at', 'desc')->limit($limit_count)->get();
+    }
+    
+    # ペジネーション
+    public function getPaginateByLimit(int $limit_count = 4)
+    {
+        return $this->orderBy('updated_at', 'desc')->paginate($limit_count);
     }
 }

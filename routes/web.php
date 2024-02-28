@@ -26,14 +26,16 @@ Route::get('/dashboard', function () {
 
 
 # 投稿関連機能
-
+Route::controller(PostController::class)->group(function() {
     # getメソッドの'/posts'のルーティング
-    Route::get('/posts', [PostController::class, 'index'])->name('index');
-    Route::get('/posts/create', [PostController::class, 'create'])->name('create');
+    Route::get('/posts', 'index')->name('index');
+    Route::get('/posts/create', 'create')->name('create');
     # postメソッドの'/posts'のルーティング
-    Route::post('/posts', [PostController::class, 'store'])->name('store');
-    Route::get('/posts/{post}', [PostController::class, 'show'])->name('show');
-
+    Route::post('/posts', 'store')->name('store');
+    # 暗黙の結合（ルートセグメント名＝変数名）
+    Route::get('/posts/{post}', 'show')->name('show');
+});
+    
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
