@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -20,7 +21,8 @@ class PostController extends Controller
     # 新規投稿を保存するメソッド
     public function store(Request $request, Post $post)
     {
-        $input = $request['post'];
+        $input = $request->input('post');
+        $input['user_id'] = Auth::id();
         $post->fill($input)->save();
         # redirectメソッドにURLを渡す
         return redirect('/posts');

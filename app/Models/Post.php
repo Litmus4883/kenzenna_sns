@@ -13,7 +13,10 @@ class Post extends Model
     use HasFactory;
     
     # fillメソッドを使う時の許可
-    protected $fillable = ['body'];
+    protected $fillable = [
+        'body',
+        'user_id',
+    ];
     
     # 1対多の定義
     public function images(): HasMany
