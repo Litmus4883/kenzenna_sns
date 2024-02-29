@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+# PostRequestは、バリデーションのために生成したクラス
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +21,7 @@ class PostController extends Controller
         return view('posts.create');
     }
     # 新規投稿を保存するメソッド
-    public function store(Request $request, Post $post)
+    public function store(PostRequest $request, Post $post)
     {
         $input = $request->input('post');
         $input['user_id'] = Auth::id();
