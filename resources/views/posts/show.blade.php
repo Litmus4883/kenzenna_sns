@@ -12,5 +12,6 @@
             <h2>{{ $post->body }}</h2>
         </div>
     </article>
+    <a href="{{ route('edit', $post) }}">編集する</a>
     <a href="{{ route('index') }}">タイムラインへ戻る</a>
 </x-app-layout>

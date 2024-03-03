@@ -34,4 +34,17 @@ class PostController extends Controller
     {
         return view('posts.show')->with(['post' => $post]);
     }
+    # 投稿編集画面を返すメソッド
+    public function edit(Post $post)
+    {
+        return view('posts.edit')->with(['post' => $post]);
+    }
+    # 投稿をupdateするメソッド
+    public function update(Request $request, Post $post)
+    {
+        $input = $request->input('post');
+        $input['user_id'] = Auth::id();
+        $post->fill($input)->save();
+        return redirect('/posts');
+    }
 }

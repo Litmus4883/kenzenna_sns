@@ -1,3 +1,4 @@
+<!-- kenz_sns/app/View/Components/AppLayout-->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
