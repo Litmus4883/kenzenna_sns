@@ -33,7 +33,11 @@ Route::controller(PostController::class)->group(function() {
     # postメソッドの'/posts'のルーティング
     Route::post('/posts', 'store')->name('store');
     # 暗黙の結合（ルートセグメント名＝変数名）
+    # {post}には、変数の主キーが入る
     Route::get('/posts/{post}', 'show')->name('show');
+    # 投稿編集画面の表示と更新
+    Route::get('/posts/{post}/edit', 'edit')->name('edit');
+    Route::put('/posts/{post}', 'update')->name('update');
 });
     
 

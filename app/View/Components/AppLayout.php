@@ -1,5 +1,6 @@
 <?php
 
+# kenz_sns/app/View/Components/AppLayout
 namespace App\View\Components;
 
 use Illuminate\View\Component;
