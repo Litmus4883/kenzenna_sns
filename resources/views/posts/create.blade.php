@@ -9,8 +9,8 @@
     <div class="post_create">
         <form action="/posts" method="post">
             @include('posts.form')
-            <input type="submit" value="保存" />
-            <a href="{{ route('index') }}">タイムラインへ戻る</a>
+            <input type="submit" value="保存" /></br>
+            <a href="{{ route('post_index') }}">タイムラインへ戻る</a>
         </form>
     </div>
 </x-app-layout>

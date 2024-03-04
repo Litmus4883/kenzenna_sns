@@ -15,10 +15,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                    <x-nav-link :href="route('post_index')" :active="request()->routeIs('post_index')">
                         {{ __('タイムライン') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
+                    <x-nav-link :href="route('post_create')" :active="request()->routeIs('post_create')">
                         {{ __('新規作成') }}
                     </x-nav-link>
                 </div>

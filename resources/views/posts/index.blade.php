@@ -15,7 +15,7 @@
                     <h2 class="name">{{ $post->user->name }}</h2>
                     <h2 class="body">{{ $post->body }}</h2>
                     <!-- 第2引数に変数名（ルートセグメント名）を指定する-->
-                    <a href="{{ route('show', $post) }}">投稿の詳細を見る</a>
+                    <a href="{{ route('post_show', $post) }}">投稿の詳細を見る</a>
                 </div>
             </article>
         @endforeach
