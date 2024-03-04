@@ -16,9 +16,9 @@ class PostController extends Controller
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
     }
     # 投稿作成画面を返すメソッド
-    public function create()
+    public function create(Post $post)
     {
-        return view('posts.create');
+        return view('posts.create')->with([ 'post' => $post]);
     }
     # 新規投稿を保存するメソッド
     public function store(PostRequest $request, Post $post)
@@ -45,6 +45,12 @@ class PostController extends Controller
         $input = $request->input('post');
         $input['user_id'] = Auth::id();
         $post->fill($input)->save();
+        return redirect('/posts');
+    }
+    # 投稿を削除するメソッド
+    public function destory(Post $post)
+    {
+        $post->delete();
         return redirect('/posts');
     }
 }

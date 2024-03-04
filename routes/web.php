@@ -28,16 +28,17 @@ Route::get('/dashboard', function () {
 # 投稿関連機能
 Route::controller(PostController::class)->group(function() {
     # getメソッドの'/posts'のルーティング
-    Route::get('/posts', 'index')->name('index');
-    Route::get('/posts/create', 'create')->name('create');
+    Route::get('/posts', 'index')->name('post_index');
+    Route::get('/posts/create', 'create')->name('post_create');
     # postメソッドの'/posts'のルーティング
-    Route::post('/posts', 'store')->name('store');
+    Route::post('/posts', 'store')->name('post_store');
     # 暗黙の結合（ルートセグメント名＝変数名）
     # {post}には、変数の主キーが入る
-    Route::get('/posts/{post}', 'show')->name('show');
+    Route::get('/posts/{post}', 'show')->name('post_show');
     # 投稿編集画面の表示と更新
-    Route::get('/posts/{post}/edit', 'edit')->name('edit');
-    Route::put('/posts/{post}', 'update')->name('update');
+    Route::get('/posts/{post}/edit', 'edit')->name('post_edit');
+    Route::put('/posts/{post}', 'update')->name('post_update');
+    Route::delete('/posts/{post}', 'destory')->name('post_destory');
 });
     
 

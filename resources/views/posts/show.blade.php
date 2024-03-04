@@ -12,6 +12,15 @@
             <h2>{{ $post->body }}</h2>
         </div>
     </article>
-    <a href="{{ route('edit', $post) }}">編集する</a>
-    <a href="{{ route('index') }}">タイムラインへ戻る</a>
+    
+    <!-- 投稿の操作 -->
+    <div class="post_control">
+        <a href="{{ route('post_edit', $post) }}">編集する</a>
+        <form onsubmit="return confirm('本当に削除しますか？')" action="/posts/{{ $post->id }}" method="post">
+            @method('delete')
+            @csrf
+            <input type="submit" value="削除する" />
+        </form>
+        <a href="{{ route('post_index') }}">タイムラインへ戻る</a>
+    </div>
 </x-app-layout>
