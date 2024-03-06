@@ -9,7 +9,8 @@
         <div class="post">
             <h2 class="name">{{ $post->user->name }}</h2>
             <h2>本文</h2>
-            <h2>{{ $post->body }}</h2>
+            <p>{{ $post->body }}</p>
+            <p>{{ $post->images->first()->image_path }}</p>
         </div>
     </article>
     

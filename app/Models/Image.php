@@ -10,6 +10,11 @@ class Image extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+        'image_path',
+        'post_id',
+    ];
+    
     # 1対多（逆）の定義
     public function post(): BelongsTo
     {

@@ -7,7 +7,7 @@
     <!-- 作成フォーム-->
     <h1>投稿作成</h1>
     <div class="post_create">
-        <form action="/posts" method="post">
+        <form action="/posts" method="post" enctype="multipart/form-data">
             @include('posts.form')
             <input type="submit" value="保存" /></br>
             <a href="{{ route('post_index') }}">タイムラインへ戻る</a>

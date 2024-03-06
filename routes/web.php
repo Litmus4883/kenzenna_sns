@@ -24,6 +24,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+# 以下、コントローラ名で昇順
 
 # 投稿関連機能
 Route::controller(PostController::class)->group(function() {
