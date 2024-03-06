@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Post;
 # PostRequestは、バリデーションのために生成したクラス
 use App\Http\Requests\PostRequest;
+use Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,11 +23,17 @@ class PostController extends Controller
         return view('posts.create')->with([ 'post' => $post]);
     }
     # 新規投稿を保存するメソッド
-    public function store(PostRequest $request, Post $post)
+    public function store(Image $image, Post $post, PostRequest $request)
     {
-        $input = $request->input('post');
-        $input['user_id'] = Auth::id();
-        $post->fill($input)->save();
+        $inputPost = $request->input('post');
+        $inputPost['user_id'] = Auth::id();
+        $post->fill($inputPost)->save();
+        
+        $uploadedFileUrl['image_path'] = Cloudinary::uploadFile($request->file('image')
+            ->getRealPath())->getSecurePath();
+        $uploadedFileUrl['post_id'] = $post->id;
+        $image->fill($uploadedFileUrl)->save();
+        
         # redirectメソッドにURLを渡す
         return redirect('/posts');
     }
