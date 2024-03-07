@@ -10,6 +10,12 @@ class Reply extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+        'body',
+        'user_id',
+        'post_id',
+    ];
+    
     # 1対多（逆）の定義
     public function post(): BelongsTo
     {

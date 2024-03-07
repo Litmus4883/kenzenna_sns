@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ReplyController;
 
 
 /*
@@ -26,7 +27,7 @@ Route::get('/dashboard', function () {
 
 # 以下、コントローラ名で昇順
 
-# 投稿関連機能
+# 投稿機能
 Route::controller(PostController::class)->group(function() {
     # getメソッドの'/posts'のルーティング
     Route::get('/posts', 'index')->name('post_index');
@@ -41,8 +42,11 @@ Route::controller(PostController::class)->group(function() {
     Route::put('/posts/{post}', 'update')->name('post_update');
     Route::delete('/posts/{post}', 'destory')->name('post_destory');
 });
-    
 
+# リプライ機能
+Route::post('/posts/{post}/reply', [ReplyController::class, 'store'])->name('reply_store');
+
+# 認証機能
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
