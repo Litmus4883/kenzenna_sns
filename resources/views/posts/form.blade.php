@@ -1,10 +1,10 @@
 @csrf
 <h2>本文</h2>
 <div class="post_body">
-    @if($post->doesntExist())
-        <textarea type="text" name="post[body]" placeholder="今日はどんな天気でしたか？"></textarea><br/>
+    @if($post)
+        <input type="text" name="post[body]" placeholder="今日はどんな天気でしたか？">{{ old('body', $post) }}</input><br/>
     @else
-        <textarea type="text" name="post[body]" placeholder="今日はどんな天気でしたか？">{{ old('body', $post) }}</textarea><br/>
+        <input type="text" name="post[body]" placeholder="今日はどんな天気でしたか？" /><br/>
     @endif
         <p class="body_error red">{{ $errors->first('post.body') }}</p>
 </div>

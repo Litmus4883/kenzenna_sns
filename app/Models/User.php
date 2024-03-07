@@ -55,4 +55,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reply::class);
     }
+    
+    # loginUserの定義
+
 }

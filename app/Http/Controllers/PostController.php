@@ -29,10 +29,12 @@ class PostController extends Controller
         $inputPost['user_id'] = Auth::id();
         $post->fill($inputPost)->save();
         
-        $uploadedFileUrl['image_path'] = Cloudinary::uploadFile($request->file('image')
-            ->getRealPath())->getSecurePath();
-        $uploadedFileUrl['post_id'] = $post->id;
-        $image->fill($uploadedFileUrl)->save();
+        if($request->file('image')) {
+            $uploadedFileUrl['image_path'] = Cloudinary::uploadFile($request->file('image')
+                ->getRealPath())->getSecurePath();
+            $uploadedFileUrl['post_id'] = $post->id;
+            $image->fill($uploadedFileUrl)->save();
+        };
         
         # redirectメソッドにURLを渡す
         return redirect('/posts');
