@@ -1,3 +1,4 @@
+<!-- form.blade.php-->
 @csrf
 <h2>本文</h2>
 <div class="post_body">
@@ -8,7 +9,8 @@
     @endif
         <p class="body_error red">{{ $errors->first('post.body') }}</p>
 </div>
+
 <div class="post_image">
-    <input type="file" name="image" />
+    <input type="file" name="image" accept="image/*" id="imageInput"/>
+    <div id="preview"></div>
 </div>
-        

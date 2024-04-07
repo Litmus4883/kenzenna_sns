@@ -34,7 +34,7 @@ class PostController extends Controller
                 ->getRealPath())->getSecurePath();
             $uploadedFileUrl['post_id'] = $post->id;
             $image->fill($uploadedFileUrl)->save();
-        };
+        }
         
         # redirectメソッドにURLを渡す
         return redirect('/posts');
