@@ -11,8 +11,7 @@
             <h2>本文</h2>
             <p>{{ $post->body }}</p>
             @if($post->images->isNotEmpty())
-                <p>{{ $post->images->first()->image_path }}</p>
-            @else
+                <img class="image" src="{{ $post->images->first()->image_path }}" alt="画像" />
             @endif
         </div>
     </article>
